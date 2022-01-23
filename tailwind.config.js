@@ -6,10 +6,12 @@ module.exports = {
   ],
   theme: {
     extend: {
-      // colors: {
-      //   primary: '#202225',
-      //   secondary: '#5865f2',
-      // }
+      colors: {
+        primary: '#DBD0C0',
+        secondary: '#FAEEE0',
+        tertiary: '#F9E4C8',
+        quatiary: '#F9CF93',
+      }
     },
   },
   plugins: [],

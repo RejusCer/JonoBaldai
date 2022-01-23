@@ -2,13 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
-/* @layer components{
-    .sidebar-icon {
-        @apply relative flex items-center justify-center h-12 w-12 mt-2 mb-2 mx-auto
+@layer components{
+    .sidebar-buttons {
+        @apply p-2 my-2 hover:bg-tertiary rounded-md
+               hover:border-b-2 hover:border-black
+               transition-all duration-300 ease-in
+               flex items-center; 
+        /* relative flex items-center justify-center h-12 w-12 mt-2 mb-2 mx-auto
                 bg-gray-600 text-green-500
                 hover:bg-green-600 hover:text-white
                 rounded-3xl hover:rounded-xl
                 transition-all duration-300 ease-in 
-                cursor-pointer;
+                cursor-pointer; */
     }
-} */
+    .sidebar-text {
+        @apply ml-2 hidden md:inline;
+    }
+    .top-nav-items {
+        @apply m-4 font-bold hover:text-gray-600;
+    }
+}
