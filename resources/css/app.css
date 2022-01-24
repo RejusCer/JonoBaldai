@@ -29,4 +29,7 @@
     .toggle-button {
         @apply h-1 w-full bg-black border-r-8;
     }
+    .item-buttons {
+        @apply p-2 text-primary border-2 border-primary rounded-lg hover:bg-primary hover:text-white;
+    }
 }
