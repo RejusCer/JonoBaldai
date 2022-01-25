@@ -17,13 +17,14 @@
     <div class="bg-gradient-to-r from-primary w-2/12 fixed h-full pt-4 pl-4 hidden md:block">
         <a href="#" class="border-r-2 border-black font-bold text-xl pr-2">JonoBaldai</a>
         
+        {{-- iš šitos dalies reikės padaryti componentą --}}
         <div class="flex flex-col mt-8">
-            <a href="#" class="sidebar-buttons"><i class="fas fa-align-justify"></i> <p class="sidebar-text">Kėdės</p></a>
-            <a href="#" class="sidebar-buttons"><i class="fas fa-archive"></i> <p class="sidebar-text">Komodos</p></a>
-            <a href="#" class="sidebar-buttons"><i class="fas fa-align-justify"></i> <p class="sidebar-text">Spintos</p></a>
-            <a href="#" class="sidebar-buttons"><i class="fas fa-wrench"></i> <p class="sidebar-text">Įrankiai</p></a>
-            <a href="#" class="sidebar-buttons"><i class="fas fa-align-justify"></i> <p class="sidebar-text">Stalai</p></a>
-            <a href="#" class="sidebar-buttons"><i class="fas fa-credit-card"></i> <p class="sidebar-text">su akcija</p></a>
+            <a href="{{ route('baldai', 'kede') }}" class="sidebar-buttons"><i class="fas fa-align-justify"></i> <p class="sidebar-text">Kėdės</p></a>
+            <a href="{{ route('baldai', 'komoda') }}" class="sidebar-buttons"><i class="fas fa-archive"></i> <p class="sidebar-text">Komodos</p></a>
+            <a href="{{ route('baldai', 'spinta') }}" class="sidebar-buttons"><i class="fas fa-align-justify"></i> <p class="sidebar-text">Spintos</p></a>
+            <a href="{{ route('baldai', 'irankis') }}" class="sidebar-buttons"><i class="fas fa-wrench"></i> <p class="sidebar-text">Įrankiai</p></a>
+            <a href="{{ route('baldai', 'stalas') }}" class="sidebar-buttons"><i class="fas fa-align-justify"></i> <p class="sidebar-text">Stalai</p></a>
+            <a href="{{ route('baldai', 'akcija') }}" class="sidebar-buttons"><i class="fas fa-credit-card"></i> <p class="sidebar-text">su akcija</p></a>
         </div>
     </div>
     
