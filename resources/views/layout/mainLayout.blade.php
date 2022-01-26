@@ -15,7 +15,7 @@
 <body>
     
     <div class="bg-gradient-to-r from-primary w-2/12 fixed h-full pt-4 pl-4 hidden md:block">
-        <a href="#" class="border-r-2 border-black font-bold text-xl pr-2">JonoBaldai</a>
+        <a href="{{ route('home') }}" class="border-r-2 border-black font-bold text-xl pr-2">JonoBaldai</a>
         
         {{-- iš šitos dalies reikės padaryti componentą --}}
         <div class="flex flex-col mt-8">
@@ -30,7 +30,7 @@
     
 
     <div class="md:ml-[16.7%]">
-        <nav class="bg-secondary rounded-2xl">
+        <nav class="bg-secondary md:rounded-b-2xl mb-12 sticky top-0">
             <div class=" w-full flex flex-col sm:flex-row justify-between items-center">
                 <div class="flex self-start sm:self-center">
                     <a href="#" class="border-r-2 border-black font-bold text-xl px-2 self-center inline md:hidden">JB</a>
@@ -43,19 +43,20 @@
                     <span class="toggle-button"></span>
                 </a>
                 <div class="nav-buttons hidden sm:flex items-center">
-                    <a href="#" class="top-nav-items"><i class="fas fa-sign-in-alt"></i> <span class="hidden sm:inline">Prisijungti</span></a>
-                    <a href="#" class="top-nav-items border-4 rounded-3xl border-black p-2 hover:bg-primary">
-                        <i class="fas fa-shopping-cart"></i> <span class="hidden sm:inline">Krepšelis </span>0
+                    <a href="{{ route('auth') }}" class="top-nav-items"><i class="fas fa-sign-in-alt"></i> <span class="hidden sm:inline">Prisijungti</span></a>
+                    <a href="{{ route('cart') }}" class="top-nav-items border-4 rounded-3xl border-black p-2 hover:bg-black hover:text-secondary">
+                        <i class="fas fa-shopping-cart"></i> <span class="hidden sm:inline">Krepšelis </span><span>0</span>
                     </a>
-                    <a href="#" class="top-nav-items border-4 rounded-3xl border-black p-2 hover:bg-primary">
-                        <i class="fas fa-heart"></i> <span class="hidden sm:inline">Norai </span>0
+                    <a href="{{ route('wishList') }}" class="top-nav-items border-4 rounded-3xl border-black p-2 hover:bg-black hover:text-secondary">
+                        <i class="fas fa-heart"></i> <span class="hidden sm:inline">Norai </span><span>0</span>
                     </a>
                 </div>
             </div>
         </nav>
 
-
-        @yield('main')
+        <div class="mx-4">
+            @yield('main')
+        </div>
     </div>
 
     <script>

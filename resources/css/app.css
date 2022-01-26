@@ -24,12 +24,31 @@
         @apply ml-2 hidden md:inline;
     }
     .top-nav-items {
-        @apply m-4 font-bold hover:text-gray-600;
+        @apply m-3 font-bold hover:text-gray-600;
     }
     .toggle-button {
         @apply h-1 w-full bg-black border-r-8;
     }
     .item-buttons {
         @apply p-2 text-primary border-2 border-primary rounded-lg hover:bg-primary hover:text-white;
+    }
+    .h-style {
+        @apply font-bold text-2xl md:text-4xl;
+    }
+
+    .form-style {
+        @apply border-2 border-black rounded-2xl bg-secondary my-4 p-4;
+    }
+
+    .input-container{
+        @apply my-4 flex flex-col;
+    }
+
+    .form-button{
+        @apply border-2 border-black rounded-lg p-2 hover:bg-black hover:text-secondary;
+    }
+
+    .input-style {
+        @apply border-2 border-black rounded-2xl p-2;
     }
 }

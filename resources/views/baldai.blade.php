@@ -2,7 +2,7 @@
 
 @section('main')
 
-    <h1 class="font-bold text-2xl md:text-4xl">@php echo $category @endphp</h1>
+    <h1 class="h-style">@php echo $category @endphp</h1>
 
     <div class="flex flex-wrap justify-evenly ">
         <div class="flex flex-col py-4 my-4 border-2 border-primary rounded-lg">

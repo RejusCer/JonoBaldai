@@ -13,7 +13,7 @@
 
     <div class="p-4">
         <div>
-            <h1 class="font-bold text-2xl md:text-4xl">Top Pasiūlymai</h1>
+            <h1 class="h-style">Top Pasiūlymai</h1>
 
             <div class="flex flex-wrap justify-evenly ">
                 <div class="flex flex-col py-4 my-4 border-2 border-primary rounded-lg">
@@ -39,7 +39,7 @@
         <hr>
 
         <div class="p-4">
-            <h1 class="font-bold text-2xl md:text-4xl">Nauji pasiūlymai</h1>
+            <h1 class="h-style">Nauji pasiūlymai</h1>
 
             <div class="flex flex-wrap justify-evenly ">
                 <div class="flex flex-col py-4 my-4 border-2 border-primary rounded-lg">

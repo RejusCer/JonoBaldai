@@ -16,10 +16,22 @@ use Symfony\Component\HttpFoundation\Request;
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');
 
 Route::get('baldai/{prekesKategorija}', function (Request $request) {
     return view('baldai', [
         'category' => $request->prekesKategorija
     ]);
 })->name('baldai');
+
+Route::get('cart', function () {
+    return view('cart');
+})->name('cart');
+
+Route::get('wishList', function() {
+    return view('wishList');
+})->name('wishList');
+
+Route::get('auth', function() {
+    return view('auth');
+})->name('auth');
