@@ -35,3 +35,11 @@ Route::get('wishList', function() {
 Route::get('auth', function() {
     return view('auth');
 })->name('auth');
+
+Route::get('details', function() {
+    return view('details');
+})->name('details');
+
+Route::get('order', function() {
+    return view('order');
+})->name('order');

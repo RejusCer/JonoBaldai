@@ -17,8 +17,8 @@
                     </div>
                     <div class="flex md:flex-col justify-between">
                         <div>
-                            <p class="font-bold text-2xl">845$</p>
-                            <p class=" font-thin text-gray-500 line-through italic">999$</p>
+                            <p class="font-bold text-2xl">845€</p>
+                            <p class="old-price">999€</p>
                         </div>
                         <div class="mt-8">
                             <i class="fas fa-trash"></i>
@@ -68,7 +68,9 @@
             <div class="flex justify-between my-2">
                 <span>Sutaupote: </span><span>75$</span>
             </div>
-            <button class="form-button w-full mt-8">Užpildyti užsakymą</button>
+            <form action="{{ route('order') }}">
+                <button class="form-button w-full mt-8">Užpildyti užsakymą</button>
+            </form>
         </div>
     </div>
 @endsection

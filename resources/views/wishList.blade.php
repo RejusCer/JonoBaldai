@@ -13,8 +13,8 @@
             </div>
             <div class="flex md:flex-col justify-between">
                 <div>
-                    <p class="font-bold text-2xl">845$</p>
-                    <p class=" font-thin text-gray-500 line-through italic">999$</p>
+                    <p class="font-bold text-2xl">845€</p>
+                    <p class=" font-thin text-gray-500 line-through italic">999€</p>
                 </div>
                 <div class="mt-8">
                     <i class="fas fa-trash"></i>

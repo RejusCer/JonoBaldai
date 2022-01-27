@@ -11,7 +11,7 @@
             </div>
             <p class="m-2 max-w-[14rem]">Prekės pavadinimas</p>
             <div class="flex justify-between pt-8 m-2">
-                <p class="font-bold text-2xl">8$</p>
+                <p class="font-bold text-2xl">8€</p>
                 <div>
                     <button class="item-buttons">Į krepšelį</button>
                     <button class="item-buttons">Noriu</button>

@@ -24,7 +24,7 @@
                     <div class="flex justify-between pt-8 m-2">
                         <p class="font-bold text-2xl">8$</p>
                         <div>
-                            <button class="item-buttons">Į krepšelį</button>
+                            <a href="{{ route('details') }}" class="item-buttons">Į krepšelį</a>
                             <button class="item-buttons">Noriu</button>
                         </div>
                     </div>
