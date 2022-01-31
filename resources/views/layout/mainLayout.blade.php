@@ -19,12 +19,24 @@
         
         {{-- iš šitos dalies reikės padaryti componentą --}}
         <div class="flex flex-col mt-8">
-            <a href="{{ route('baldai', 'kede') }}" class="sidebar-buttons"><i class="fas fa-align-justify"></i> <p class="sidebar-text">Kėdės</p></a>
-            <a href="{{ route('baldai', 'komoda') }}" class="sidebar-buttons"><i class="fas fa-archive"></i> <p class="sidebar-text">Komodos</p></a>
-            <a href="{{ route('baldai', 'spinta') }}" class="sidebar-buttons"><i class="fas fa-align-justify"></i> <p class="sidebar-text">Spintos</p></a>
-            <a href="{{ route('baldai', 'irankis') }}" class="sidebar-buttons"><i class="fas fa-wrench"></i> <p class="sidebar-text">Įrankiai</p></a>
-            <a href="{{ route('baldai', 'stalas') }}" class="sidebar-buttons"><i class="fas fa-align-justify"></i> <p class="sidebar-text">Stalai</p></a>
-            <a href="{{ route('baldai', 'akcija') }}" class="sidebar-buttons"><i class="fas fa-credit-card"></i> <p class="sidebar-text">su akcija</p></a>
+            <a href="{{ route('baldai', 'kede') }}" class="sidebar-buttons">
+                <i class="fas fa-align-justify"></i> <p class="sidebar-text">Kėdės</p>
+            </a>
+            <a href="{{ route('baldai', 'komoda') }}" class="sidebar-buttons">
+                <i class="fas fa-archive"></i> <p class="sidebar-text">Komodos</p>
+            </a>
+            <a href="{{ route('baldai', 'spinta') }}" class="sidebar-buttons">
+                <i class="fas fa-align-justify"></i> <p class="sidebar-text">Spintos</p>
+            </a>
+            <a href="{{ route('baldai', 'irankis') }}" class="sidebar-buttons">
+                <i class="fas fa-wrench"></i> <p class="sidebar-text">Įrankiai</p>
+            </a>
+            <a href="{{ route('baldai', 'stalas') }}" class="sidebar-buttons">
+                <i class="fas fa-align-justify"></i> <p class="sidebar-text">Stalai</p>
+            </a>
+            <a href="{{ route('baldai', 'akcija') }}" class="sidebar-buttons">
+                <i class="fas fa-credit-card"></i> <p class="sidebar-text">su akcija</p>
+            </a>
         </div>
     </div>
     
@@ -43,7 +55,17 @@
                     <span class="toggle-button"></span>
                 </a>
                 <div class="nav-buttons hidden sm:flex items-center">
-                    <a href="{{ route('auth') }}" class="top-nav-items"><i class="fas fa-sign-in-alt"></i> <span class="hidden sm:inline">Prisijungti</span></a>
+                    @auth
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button class="top-nav-items"><i class="fas fa-sign-in-alt"></i> <span class="hidden sm:inline">Atsijungti</span></button> 
+                    </form>
+                    @endauth
+                    @guest
+                    <a href="{{ route('login') }}" class="top-nav-items">
+                        <i class="fas fa-sign-in-alt"></i> <span class="hidden sm:inline">Prisijungti</span>
+                    </a>
+                    @endguest
                     <a href="{{ route('cart') }}" class="top-nav-items border-4 rounded-3xl border-black p-2 hover:bg-black hover:text-secondary">
                         <i class="fas fa-shopping-cart"></i> <span class="hidden sm:inline">Krepšelis </span><span>0</span>
                     </a>

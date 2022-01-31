@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use Symfony\Component\HttpFoundation\Request;
 
 /*
@@ -32,9 +33,13 @@ Route::get('wishList', function() {
     return view('wishList');
 })->name('wishList');
 
-Route::get('auth', function() {
-    return view('auth');
-})->name('auth');
+Route::post('auth/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::get('auth/login', [AuthController::class, 'login'])->name('login');
+Route::post('auth/login', [AuthController::class, 'loginUser'])->name('login');
+
+Route::get('auth/registration', [AuthController::class, 'registration'])->name('registration');
+Route::post('auth/registration', [AuthController::class, 'register'])->name('registration');
 
 Route::get('details', function() {
     return view('details');
