@@ -3,36 +3,23 @@
 @section('main')
     {{-- Jei ekranas mažas: kategorijas rodys pagrindiniame lauke --}}
     <div class="flex flex-wrap justify-evenly md:hidden mt-8 ">
-        <a href="{{ route('baldai', 'kede') }}" class="category-container"><i class="fas fa-align-justify"></i> <p class="ml-1">Kėdės</p></a>
-        <a href="{{ route('baldai', 'kede') }}" class="category-container"><i class="fas fa-archive"></i> <p class="ml-1">Komodos</p></a>
-        <a href="{{ route('baldai', 'kede') }}" class="category-container"><i class="fas fa-align-justify"></i> <p class="ml-1">Spintos</p></a>
-        <a href="{{ route('baldai', 'kede') }}" class="category-container"><i class="fas fa-wrench"></i> <p class="ml-1">Įrankiai</p></a>
-        <a href="{{ route('baldai', 'kede') }}" class="category-container"><i class="fas fa-align-justify"></i> <p class="ml-1">Stalai</p></a>
-        <a href="{{ route('baldai', 'kede') }}" class="category-container"><i class="fas fa-credit-card"></i> <p class="ml-1">su akcija</p></a>
+        <a href="{{ route('baldai', 'kedes') }}" class="category-container"><i class="fas fa-align-justify"></i> <p class="ml-1">Kėdės</p></a>
+        <a href="{{ route('baldai', 'komodos') }}" class="category-container"><i class="fas fa-archive"></i> <p class="ml-1">Komodos</p></a>
+        <a href="{{ route('baldai', 'spintos') }}" class="category-container"><i class="fas fa-align-justify"></i> <p class="ml-1">Spintos</p></a>
+        <a href="{{ route('baldai', 'irankiai') }}" class="category-container"><i class="fas fa-wrench"></i> <p class="ml-1">Įrankiai</p></a>
+        <a href="{{ route('baldai', 'stalai') }}" class="category-container"><i class="fas fa-align-justify"></i> <p class="ml-1">Stalai</p></a>
+        <a href="{{ route('baldai', 'akcijos') }}" class="category-container"><i class="fas fa-credit-card"></i> <p class="ml-1">su akcija</p></a>
     </div>
 
     <div class="p-4">
         <div>
             <h1 class="h-style">Top Pasiūlymai</h1>
-
             <div class="flex flex-wrap justify-evenly ">
-                <div class="flex flex-col py-4 my-4 border-2 border-primary rounded-lg">
-                    <div>
-                        <img class="w-full" src="{{ asset("img/kede.jpg") }}" alt="Nuotrauka">
-                    </div>
-                    <p class="m-2 max-w-[14rem]">Prekės pavadinimas</p>
-                    <div class="flex justify-between pt-8 m-2">
-                        <p class="font-bold text-2xl">8$</p>
-                        <div>
-                            <a href="{{ route('details') }}" class="item-buttons">Į krepšelį</a>
-                            <button class="item-buttons">Noriu</button>
-                        </div>
-                    </div>
-                </div>
-
-                
-
-                
+                @forelse ($topOffers as $product)
+                <x-product :product="$product" />
+                @empty
+                    Nėra prekių
+                @endforelse
             </div>
         </div>
 
@@ -42,25 +29,11 @@
             <h1 class="h-style">Nauji pasiūlymai</h1>
 
             <div class="flex flex-wrap justify-evenly ">
-                <div class="flex flex-col py-4 my-4 border-2 border-primary rounded-lg">
-                    <div>
-                        <img class="w-full" src="{{ asset("img/kede.jpg") }}" alt="Nuotrauka">
-                    </div>
-                    <p class="m-2 max-w-[14rem]">Prekės pavadinimas</p>
-                    <div class="flex justify-between pt-8 m-2">
-                        <p class="font-bold text-2xl">8$</p>
-                        <div>
-                            <button class="item-buttons">Į krepšelį</button>
-                            <button class="item-buttons">Noriu</button>
-                        </div>
-                    </div>
-                </div>
-
-                
-
-                
-
-                
+                @forelse ($newOffers as $product)
+                <x-product :product="$product" />
+                @empty
+                    Nėra prekių
+                @endforelse                
             </div>
         </div>
 
@@ -70,23 +43,11 @@
             <h1 class="font-bold text-2xl md:text-4xl">Išpardavimai</h1>
 
             <div class="flex flex-wrap justify-evenly ">
-                <div class="flex flex-col py-4 my-4 border-2 border-primary rounded-lg">
-                    <div>
-                        <img class="w-full" src="{{ asset("img/kede.jpg") }}" alt="Nuotrauka">
-                    </div>
-                    <p class="m-2 max-w-[14rem]">Prekės pavadinimas</p>
-                    <div class="flex justify-between pt-8 m-2">
-                        <p class="font-bold text-2xl">8$</p>
-                        <div>
-                            <button class="item-buttons">Į krepšelį</button>
-                            <button class="item-buttons">Noriu</button>
-                        </div>
-                    </div>
-                </div>
-
-                
-
-                
+                @forelse ($discountOffers as $product)
+                <x-product :product="$product" />
+                @empty
+                    Nėra prekių
+                @endforelse  
             </div>
         </div>
     </div>

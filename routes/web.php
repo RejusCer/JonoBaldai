@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductController;
 use Symfony\Component\HttpFoundation\Request;
 
 /*
@@ -15,15 +17,9 @@ use Symfony\Component\HttpFoundation\Request;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('baldai/{prekesKategorija}', function (Request $request) {
-    return view('baldai', [
-        'category' => $request->prekesKategorija
-    ]);
-})->name('baldai');
+Route::get('baldai/{itemCategory}', [ProductController::class, 'index'])->name('baldai');
 
 Route::get('cart', function () {
     return view('cart');
