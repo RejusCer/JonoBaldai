@@ -8,7 +8,8 @@
     <div class="flex justify-between pt-8 m-2">
         <p class="font-bold text-2xl">{{ $product->price }}€</p>
         <div>
-            <form action="" class="inline">
+            <form action="{{ route('cartStore', $product) }}" method="POST" class="inline">
+                @csrf
                 <button class="item-buttons">Į krepšelį</button>
             </form>
             <button class="item-buttons">Noriu</button>

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,9 +22,8 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('baldai/{itemCategory}', [ProductController::class, 'index'])->name('baldai');
 
-Route::get('cart', function () {
-    return view('cart');
-})->name('cart');
+Route::get('cart', [CartController::class, 'index'])->name('cart');
+Route::post('cart/{product}', [CartController::class, 'store'])->name('cartStore');
 
 Route::get('wishList', function() {
     return view('wishList');

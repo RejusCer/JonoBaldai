@@ -46,8 +46,9 @@
             <div class=" w-full flex flex-col sm:flex-row justify-between items-center">
                 <div class="flex self-start sm:self-center">
                     <a href="#" class="border-r-2 border-black font-bold text-xl px-2 self-center inline md:hidden">JB</a>
-                    <a href="#" class="top-nav-items">Susisiekime</a>
-                    <a href="#" class="top-nav-items">Apie</a>
+                    @auth
+                    <a href="#" class="top-nav-items">{{ auth()->user()->first_name }}</a>
+                    @endauth
                 </div>
                 <a href="#" class="toggler absolute top-3 right-4 flex sm:hidden flex-col justify-between w-8 h-5">
                     <span class="toggle-button"></span>
@@ -67,7 +68,9 @@
                     </a>
                     @endguest
                     <a href="{{ route('cart') }}" class="top-nav-items border-4 rounded-3xl border-black p-2 hover:bg-black hover:text-secondary">
-                        <i class="fas fa-shopping-cart"></i> <span class="hidden sm:inline">Krepšelis </span><span>0</span>
+                        <i class="fas fa-shopping-cart"></i> <span class="hidden sm:inline">Krepšelis </span>
+                        @auth <span>{{ auth()->user()->cart_items_count() }}</span> @endauth
+                        @guest <span>0</span> @endguest
                     </a>
                     <a href="{{ route('wishList') }}" class="top-nav-items border-4 rounded-3xl border-black p-2 hover:bg-black hover:text-secondary">
                         <i class="fas fa-heart"></i> <span class="hidden sm:inline">Norai </span><span>0</span>
