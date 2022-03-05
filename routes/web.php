@@ -24,6 +24,7 @@ Route::get('baldai/{itemCategory}', [ProductController::class, 'index'])->name('
 
 Route::get('cart', [CartController::class, 'index'])->name('cart');
 Route::post('cart/{product}', [CartController::class, 'store'])->name('cartStore');
+Route::delete('cart/{cart_item_id}', [CartController::class, 'destroy'])->name('destroy');
 
 Route::get('wishList', function() {
     return view('wishList');

@@ -9,7 +9,7 @@ class ProductController extends Controller
 {
     public function index(Request $request)
     {
-        $products = Product::get()->where('category', $request->itemCategory);
+        $products = Product::where('category', $request->itemCategory)->get();
 
         return view('baldai', [
             'products' => $products,

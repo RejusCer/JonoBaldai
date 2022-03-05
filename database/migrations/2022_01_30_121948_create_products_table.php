@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->float('price');
             $table->string('image');
-            $table->integer('discount')->nullable();
+            $table->integer('discount')->default(0);
             $table->string('category')->nullable();
             $table->float('weight')->nullable();
             $table->float('heigth')->nullable();

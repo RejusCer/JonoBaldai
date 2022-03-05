@@ -10,7 +10,7 @@
             <div class="bg-secondary mb-4 p-4">
                 <div class="flex flex-col md:flex-row justify-between">
                     <div class="flex">
-                        <img src="{{ asset("img/kede.jpg") }}" alt="" class="h-28 mb-2">
+                        <img src="{{ asset($item->product->image) }}" alt="" class="h-28 mb-2">
 
                         <div class="ml-4">
                             <p class="font-bold text-2xl">{{ $item->product->name }}</p>
@@ -23,7 +23,14 @@
                             <p class="old-price">{{ $item->product->price }}€</p>
                         </div>
                         <div class="mt-8">
-                            <i class="fas fa-trash"></i>
+                            <form action="{{ route('destroy', $item->id) }}" method="POST" class="inline">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </form>
+                            
                             <span class="ml-2 px-1 border-2 rounded-lg border-black">
                                 <span class="px-1 hover:bg-black hover:text-white rounded-full">+</span>
                                 <span class="borde border-x-2 border-black px-1"> {{$item->quantity}} </span>

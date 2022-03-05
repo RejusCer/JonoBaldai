@@ -70,7 +70,7 @@
                     <a href="{{ route('cart') }}" class="top-nav-items border-4 rounded-3xl border-black p-2 hover:bg-black hover:text-secondary">
                         <i class="fas fa-shopping-cart"></i> <span class="hidden sm:inline">Krepšelis </span>
                         @auth <span>{{ auth()->user()->cart_items_count() }}</span> @endauth
-                        @guest <span>0</span> @endguest
+                        @guest <span>{{ cartItemCount() }}</span> @endguest
                     </a>
                     <a href="{{ route('wishList') }}" class="top-nav-items border-4 rounded-3xl border-black p-2 hover:bg-black hover:text-secondary">
                         <i class="fas fa-heart"></i> <span class="hidden sm:inline">Norai </span><span>0</span>
@@ -92,6 +92,34 @@
             buttons.classList.toggle("hidden")
             buttons.classList.toggle("flex")
         })
+    </script>
+
+    <script>
+
+        function uuidv4() {
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+            var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+            return v.toString(16);
+        });
+        }
+
+        function getCookie(cookieName) {
+            let cookie = {};
+            document.cookie.split(';').forEach(function(el) {
+                let [key,value] = el.split('=');
+                cookie[key.trim()] = value;
+            })
+            return cookie[cookieName];
+        }
+
+        let device = getCookie('device')
+
+        if (device == null || device == undefined)
+        {
+            device = uuidv4()
+        }
+
+        document.cookie = 'device=' + device
     </script>
 </body>
 </html>
