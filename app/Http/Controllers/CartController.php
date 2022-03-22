@@ -10,11 +10,11 @@ use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $Cart_items = [];
 
-        if (auth()->user() == null)
+        if (auth()->user() == null && isset($_COOKIE['device']))
         {
             $Cart_items = Cart_items::join('carts', 'carts.id', '=', 'cart_items.cart_id')
                 ->join('users', 'users.id', '=', 'carts.user_id')->select('cart_items.*', 'users.device')
@@ -84,5 +84,10 @@ class CartController extends Controller
         $item->delete();
 
         return back();
+    }
+
+    public function increment()
+    {
+        dd('sadf');
     }
 }

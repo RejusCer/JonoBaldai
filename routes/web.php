@@ -22,6 +22,8 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('baldai/{itemCategory}', [ProductController::class, 'index'])->name('baldai');
 
+Route::get('cart/increment', [CartController::class, 'increment'])->name('increment');
+
 Route::get('cart', [CartController::class, 'index'])->name('cart');
 Route::post('cart/{product}', [CartController::class, 'store'])->name('cartStore');
 Route::delete('cart/{cart_item_id}', [CartController::class, 'destroy'])->name('destroy');

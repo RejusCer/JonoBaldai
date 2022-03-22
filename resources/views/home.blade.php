@@ -14,6 +14,7 @@
     <div class="p-4">
         <div>
             <h1 class="h-style">Top Pasiūlymai</h1>
+
             <div class="flex flex-wrap justify-evenly ">
                 @forelse ($topOffers as $product)
                 <x-product :product="$product" />

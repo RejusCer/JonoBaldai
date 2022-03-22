@@ -4,16 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
 
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
+    <script src="{{ asset('js/device_id.js') }}" defer></script>
 
     {{-- font awesome --}}
     <script src="https://kit.fontawesome.com/a5ab502b29.js" crossorigin="anonymous"></script>
 
+    {{-- jquery --}}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" 
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
+    crossorigin="anonymous"></script>
+
     <title>JonoBaldai</title>
 </head>
 <body>
-    
     <div class="bg-gradient-to-r from-primary w-2/12 fixed h-full pt-4 pl-4 hidden md:block">
         <a href="{{ route('home') }}" class="border-r-2 border-black font-bold text-xl pr-2">JonoBaldai</a>
         
@@ -45,7 +52,7 @@
         <nav class="bg-secondary md:rounded-b-2xl mb-12 sticky top-0">
             <div class=" w-full flex flex-col sm:flex-row justify-between items-center">
                 <div class="flex self-start sm:self-center">
-                    <a href="#" class="border-r-2 border-black font-bold text-xl px-2 self-center inline md:hidden">JB</a>
+                    <a href="{{ route('home') }}" class="border-r-2 border-black font-bold text-xl px-2 self-center inline md:hidden">JB</a>
                     @auth
                     <a href="#" class="top-nav-items">{{ auth()->user()->first_name }}</a>
                     @endauth
@@ -92,34 +99,6 @@
             buttons.classList.toggle("hidden")
             buttons.classList.toggle("flex")
         })
-    </script>
-
-    <script>
-
-        function uuidv4() {
-        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-            var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
-            return v.toString(16);
-        });
-        }
-
-        function getCookie(cookieName) {
-            let cookie = {};
-            document.cookie.split(';').forEach(function(el) {
-                let [key,value] = el.split('=');
-                cookie[key.trim()] = value;
-            })
-            return cookie[cookieName];
-        }
-
-        let device = getCookie('device')
-
-        if (device == null || device == undefined)
-        {
-            device = uuidv4()
-        }
-
-        document.cookie = 'device=' + device
     </script>
 </body>
 </html>
