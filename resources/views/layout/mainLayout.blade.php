@@ -76,11 +76,13 @@
                     @endguest
                     <a href="{{ route('cart') }}" class="top-nav-items border-4 rounded-3xl border-black p-2 hover:bg-black hover:text-secondary">
                         <i class="fas fa-shopping-cart"></i> <span class="hidden sm:inline">Krepšelis </span>
-                        @auth <span>{{ auth()->user()->cart_items_count() }}</span> @endauth
+                        @auth <span>{{ auth()->user()->Cart->Cart_Items->count() }}</span> @endauth
                         @guest <span>{{ cartItemCount() }}</span> @endguest
                     </a>
                     <a href="{{ route('wishList') }}" class="top-nav-items border-4 rounded-3xl border-black p-2 hover:bg-black hover:text-secondary">
-                        <i class="fas fa-heart"></i> <span class="hidden sm:inline">Norai </span><span>0</span>
+                        <i class="fas fa-heart"></i> <span class="hidden sm:inline">Norai </span>
+                        @auth <span>{{ auth()->user()->Wishlist->Wishlist_items->count() }}</span> @endauth
+                        @guest<span>{{ wishlistItemCount() }}</span>@endguest
                     </a>
                 </div>
             </div>

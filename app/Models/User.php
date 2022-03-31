@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\Cart;
+use App\Models\Wishlist;
 use App\Models\Cart_items;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
@@ -49,8 +51,25 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function cart_items_count()
+    public function Cart()
     {
-        return Cart_items::join('carts', 'carts.id', '=', 'cart_items.cart_id')->where('user_id', $this->id)->count();
+        return $this->hasOne(Cart::class);
+    }
+
+    public function Wishlist()
+    {
+        return $this->hasOne(Wishlist::class);
+    }
+
+    // public function cart_items_count()
+    // {
+    //     return Cart_items::join('carts', 'carts.id', '=', 'cart_items.cart_id')->where('user_id', $this->id)->count();
+    // }
+
+
+
+    public function wishlist_items_count()
+    {
+        
     }
 }

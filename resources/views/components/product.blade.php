@@ -8,11 +8,21 @@
     <div class="flex justify-between pt-8 m-2">
         <p class="font-bold text-2xl">{{ $product->price }}€</p>
         <div>
+            @if ($product->isProductInCart)
+            <form action="{{ route('cart') }}" method="GET" class="inline">
+                <button class="p-2 border-2 border-green-700 text-green-700 rounded-lg hover:bg-green-700 hover:text-white">Pirkti</button>
+            </form>
+            @else
             <form action="{{ route('cartStore', $product) }}" method="POST" class="inline">
                 @csrf
                 <button class="item-buttons">Į krepšelį</button>
             </form>
-            <button class="item-buttons">Noriu</button>
+            @endif
+
+            <form action="{{ route('wishStore', $product) }}" method="POST" class="inline">
+                @csrf
+                <button class="item-buttons">Noriu</button>
+            </form>
         </div>
     </div>
 </div>

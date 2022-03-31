@@ -3,11 +3,11 @@
 namespace App\Models;
 
 use App\Models\User;
-use App\Models\Cart_items;
+use App\Models\Wishlist_items;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Cart extends Model
+class Wishlist extends Model
 {
     use HasFactory;
 
@@ -20,13 +20,8 @@ class Cart extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function Cart_items()
+    public function Wishlist_items()
     {
-        return $this->hasMany(Cart_items::class);
+        return $this->hasMany(Wishlist_items::class);
     }
-
-    // public function Cart_items()
-    // {
-    //     return $this->hasManyThrought(Cart_items::class);
-    // }
 }

@@ -48,8 +48,9 @@ class CartController extends Controller
             }
 
             // sukurti cart jei tas neprisijunges naudotojas jos neturi
-            if (($userCart = Cart::join("users", "users.id", "=", "carts.user_id")
-                ->where('device', $user->device)->first()) == null){
+            if (($userCart = Cart::with(['User'])->whereHas('User', function($q) use($user) {
+                $q->where('device', $user->device);
+            })->first()) == null){
 
                 $userCart = Cart::create([
                     'user_id' => $user->id
@@ -86,8 +87,8 @@ class CartController extends Controller
         return back();
     }
 
-    public function increment()
-    {
-        dd('sadf');
-    }
+    // public function increment()
+    // {
+    //     dd('sadf');
+    // }
 }

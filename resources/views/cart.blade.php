@@ -109,7 +109,7 @@
                 // pisausi jau 3 dienas, mano protas tokio dalyko nebegali pavežti, esu pasiekęs tokia stadiją 
                 // kur man reikia dievo pagalbos arba varyti į Amsterdamą grybus uostyt
                 // $.ajax({
-                //     url: "{{ route('increment') }}",
+                //     url: "increment",
                 //     type: 'GET',
                 //     data: {itemId: quantitys[i].dataset.itemId},
                 //     success: function(result){
