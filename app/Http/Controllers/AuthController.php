@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\User;
+use App\Models\Wishlist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -25,6 +27,8 @@ class AuthController extends Controller
             return back()->with('status', 'Įvesti netinkami duomenys');
         }
 
+        setcookie('device', auth()->user()->device, time()+2629743, '/');
+
         return redirect()->route('home');
     }
 
@@ -42,12 +46,30 @@ class AuthController extends Controller
             'password' => 'required|confirmed|max:255',
         ]);
 
-        User::create([
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+        // jei jau vartotojas yra duomenų bazėjė (yra pasinaudojęs cart is wish funkcijomis) - užregistruoti pilnai
+        if ($user = User::where('device', $_COOKIE['device'])->first())
+        {
+            $user->first_name = $request->first_name;
+            $user->last_name = $request->last_name;
+            $user->email = $request->email;
+            $user->password = Hash::make($request->password);
+    
+            $user->save();
+        }
+        else
+        {
+            $user = User::create([
+                'first_name' => $request->first_name,
+                'last_name' => $request->last_name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'device' => $_COOKIE['device'],
+            ]);
+
+            Cart::create(['user_id' => $user->id]);
+
+            Wishlist::create(['user_id' => $user->id]);
+        }
 
 
         //prijungti prie paskyros

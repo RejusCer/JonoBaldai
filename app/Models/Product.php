@@ -27,10 +27,29 @@ class Product extends Model
         }
 
 
-        if ($foundProduct->count() == 1)
+        if ($foundProduct->count() == 1) return true;
+
+        return false;
+    }
+
+    public function getisProductInWishAttribute()
+    {
+        if (auth()->user() != null)
         {
-            return true;
+            $foundProduct = Wishlist_items::join('Wishlists', 'Wishlists.id', '=', 'Wishlist_items.wishlist_id')->
+                    where('user_id', auth()->user()->id)->where('product_id', $this->id)->get();
         }
+        else
+        {
+            if(!isset($_COOKIE['device'])) return false;
+
+            $foundProduct = Wishlist_items::join('Wishlists', 'Wishlists.id', '=', 'Wishlist_items.wishlist_id')->
+                        join('users', 'users.id', '=', 'Wishlists.user_id')->
+                        where('device', $_COOKIE['device'])->where('product_id', $this->id)->get();
+        }
+
+
+        if ($foundProduct->count() == 1) return true;
 
         return false;
     }

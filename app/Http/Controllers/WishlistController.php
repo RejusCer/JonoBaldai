@@ -12,7 +12,20 @@ class WishlistController extends Controller
 {
     public function index()
     {
-        return view('wishList');
+        $Wishlist_items = [];
+
+        if (isset($_COOKIE['device']))
+        {
+            $Wishlist_items = Wishlist_items::with(['Wishlist'])->whereHas('Wishlist', function($q){
+                $q->with(['User'])->whereHas('User', function($w){
+                    $w->where('device', $_COOKIE['device']);
+                });
+            })->get();
+        }
+
+        return view('wishList', [
+            'Wishlist_items' => $Wishlist_items
+        ]);
     }
 
     public function store(Product $product)
@@ -53,6 +66,13 @@ class WishlistController extends Controller
             'wishlist_id' => $wishlist->id,
             'product_id' => $product->id
         ]);
+
+        return back();
+    }
+
+    public function destroy(Wishlist_items $wish_item)
+    {
+        $wish_item->delete();
 
         return back();
     }

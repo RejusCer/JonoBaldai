@@ -31,6 +31,7 @@ Route::delete('cart/{cart_item_id}', [CartController::class, 'destroy'])->name('
 
 Route::get('wishList', [WishlistController::class, 'index'])->name('wishList');
 Route::post('wishlist/{product}', [WishlistController::class, 'store'])->name('wishStore');
+Route::delete('wishlist/{wish_item}', [WishlistController::class, 'destroy'])->name('wish.destroy');
 
 Route::post('auth/logout', [AuthController::class, 'logout'])->name('logout');
 

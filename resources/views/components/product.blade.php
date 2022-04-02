@@ -19,10 +19,16 @@
             </form>
             @endif
 
+            @if ($product->isProductInWish)
+                <form action="{{ route('wishList') }}" method="GET" class="inline">
+                    <button class="p-2 border-2 border-green-700 text-green-700 rounded-lg hover:bg-green-700 hover:text-white">Norai</button>
+                </form>
+            @else
             <form action="{{ route('wishStore', $product) }}" method="POST" class="inline">
                 @csrf
                 <button class="item-buttons">Noriu</button>
             </form>
+            @endif
         </div>
     </div>
 </div>

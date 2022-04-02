@@ -24,9 +24,4 @@ class Cart extends Model
     {
         return $this->hasMany(Cart_items::class);
     }
-
-    // public function Cart_items()
-    // {
-    //     return $this->hasManyThrought(Cart_items::class);
-    // }
 }

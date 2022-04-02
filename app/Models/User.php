@@ -60,16 +60,4 @@ class User extends Authenticatable
     {
         return $this->hasOne(Wishlist::class);
     }
-
-    // public function cart_items_count()
-    // {
-    //     return Cart_items::join('carts', 'carts.id', '=', 'cart_items.cart_id')->where('user_id', $this->id)->count();
-    // }
-
-
-
-    public function wishlist_items_count()
-    {
-        
-    }
 }
