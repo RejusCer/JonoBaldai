@@ -1,16 +1,21 @@
 @props(['product' => $product])
 
 <div class="flex flex-col py-4 my-4 border-2 border-primary rounded-lg">
-    <div>
-        <img class="w-full" src="{{ asset($product->image) }}" alt="Nuotrauka">
+    <div class="m-auto">
+        <a href="{{route('details', $product)}}">
+            <img class="h-44" src="{{ asset($product->image) }}" alt="Nuotrauka">
+        </a>
     </div>
     <p class="m-2 max-w-[14rem]">{{ $product->name }}</p>
     <div class="flex justify-between pt-8 m-2">
-        <p class="font-bold text-2xl">{{ $product->price }}€</p>
+        <div class="pr-4">
+            <p class="font-bold text-2xl" id="currentPrice">{{ $product->price * (1 - $product->discount / 100) }}€</p>
+            <p class="old-price">{{ $product->price }}€</p>
+        </div>
         <div>
             @if ($product->isProductInCart)
             <form action="{{ route('cart') }}" method="GET" class="inline">
-                <button class="p-2 border-2 border-green-700 text-green-700 rounded-lg hover:bg-green-700 hover:text-white">Pirkti</button>
+                <button class="item-buttons-activated">Pirkti</button>
             </form>
             @else
             <form action="{{ route('cartStore', $product) }}" method="POST" class="inline">
@@ -21,7 +26,7 @@
 
             @if ($product->isProductInWish)
                 <form action="{{ route('wishList') }}" method="GET" class="inline">
-                    <button class="p-2 border-2 border-green-700 text-green-700 rounded-lg hover:bg-green-700 hover:text-white">Norai</button>
+                    <button class="item-buttons-activated">Norai</button>
                 </form>
             @else
             <form action="{{ route('wishStore', $product) }}" method="POST" class="inline">
@@ -32,3 +37,4 @@
         </div>
     </div>
 </div>
+

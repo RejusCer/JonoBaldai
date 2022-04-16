@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
     <script src="{{ asset('js/device_id.js') }}" defer></script>
+    <script src="{{ asset('js/hide_same_price.js') }}" defer></script>
 
     {{-- font awesome --}}
     <script src="https://kit.fontawesome.com/a5ab502b29.js" crossorigin="anonymous"></script>

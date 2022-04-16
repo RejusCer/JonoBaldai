@@ -32,6 +32,9 @@
     .item-buttons {
         @apply p-2 text-primary border-2 border-primary rounded-lg hover:bg-primary hover:text-white;
     }
+    .item-buttons-activated {
+        @apply p-2 border-2 border-green-700 text-green-700 rounded-lg hover:bg-green-700 hover:text-white;
+    }
     .h-style {
         @apply font-bold text-2xl md:text-4xl;
     }

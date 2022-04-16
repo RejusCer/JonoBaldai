@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\DetailsController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\WishlistController;
 use Symfony\Component\HttpFoundation\Request;
@@ -41,9 +42,7 @@ Route::post('auth/login', [AuthController::class, 'loginUser'])->name('login');
 Route::get('auth/registration', [AuthController::class, 'registration'])->name('registration');
 Route::post('auth/registration', [AuthController::class, 'register'])->name('registration');
 
-Route::get('details', function() {
-    return view('details');
-})->name('details');
+Route::get('details/{product}', [DetailsController::class, 'index'])->name('details');
 
 Route::get('order', function() {
     return view('order');
