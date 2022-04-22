@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\DetailsController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\WishlistController;
@@ -44,6 +45,5 @@ Route::post('auth/registration', [AuthController::class, 'register'])->name('reg
 
 Route::get('details/{product}', [DetailsController::class, 'index'])->name('details');
 
-Route::get('order', function() {
-    return view('order');
-})->name('order');
+Route::get('order', [OrderController::class, 'index'])->name('order');
+Route::post('order/make_order', [OrderController::class, 'store'])->name('order.store');

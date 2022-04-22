@@ -607,6 +607,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .m-8 {
   margin: 2rem;
 }
+.m-4 {
+  margin: 1rem;
+}
 .m-2 {
   margin: 0.5rem;
 }
@@ -654,6 +657,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .ml-1 {
   margin-left: 0.25rem;
 }
+.mr-8 {
+  margin-right: 2rem;
+}
 .mb-12 {
   margin-bottom: 3rem;
 }
@@ -680,17 +686,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .h-full {
   height: 100%;
 }
-.h-5 {
-  height: 1.25rem;
-}
-.h-2\/5 {
-  height: 40%;
-}
 .h-44 {
   height: 11rem;
 }
-.h-56 {
-  height: 14rem;
+.h-5 {
+  height: 1.25rem;
 }
 .w-full {
   width: 100%;
@@ -703,12 +703,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .w-8 {
   width: 2rem;
-}
-.w-1\/4 {
-  width: 25%;
-}
-.w-0 {
-  width: 0px;
 }
 .max-w-\[14rem\] {
   max-width: 14rem;
@@ -731,6 +725,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .justify-between {
   justify-content: space-between;
 }
+.justify-around {
+  justify-content: space-around;
+}
 .justify-evenly {
   justify-content: space-evenly;
 }
@@ -748,6 +745,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .rounded-full {
   border-radius: 9999px;
+}
+.rounded-2xl {
+  border-radius: 1rem;
 }
 .rounded-3xl {
   border-radius: 1.5rem;
@@ -806,15 +806,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-left: 0.5rem;
   padding-right: 0.5rem;
 }
-.px-4 {
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
 .pr-16 {
   padding-right: 4rem;
 }
 .pt-8 {
   padding-top: 2rem;
+}
+.pr-4 {
+  padding-right: 1rem;
 }
 .pt-4 {
   padding-top: 1rem;
@@ -824,12 +823,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .pr-2 {
   padding-right: 0.5rem;
-}
-.pr-4 {
-  padding-right: 1rem;
-}
-.text-center {
-  text-align: center;
 }
 .text-2xl {
   font-size: 1.5rem;
@@ -853,9 +846,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .font-thin {
   font-weight: 100;
 }
-.italic {
-  font-style: italic;
-}
 .text-gray-500 {
   --tw-text-opacity: 1;
   color: rgb(107 114 128 / var(--tw-text-opacity));
@@ -863,10 +853,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .text-red-400 {
   --tw-text-opacity: 1;
   color: rgb(248 113 113 / var(--tw-text-opacity));
-}
-.line-through {
-  -webkit-text-decoration-line: line-through;
-          text-decoration-line: line-through;
 }
 
 .hover\:bg-black:hover {
@@ -912,6 +898,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   .md\:mx-4 {
     margin-left: 1rem;
     margin-right: 1rem;
+  }
+
+  .md\:ml-4 {
+    margin-left: 1rem;
   }
 
   .md\:ml-\[16\.7\%\] {

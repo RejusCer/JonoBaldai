@@ -14,8 +14,8 @@
             </div>
             <div class="flex md:flex-col justify-between">
                 <div>
-                    <p class="font-bold text-2xl">{{ $wish_item->Product->price * (1 - $wish_item->Product->discount / 100) }}€</p>
-                    <p class=" font-thin text-gray-500 line-through italic">{{ $wish_item->Product->price }}€</p>
+                    <p class="font-bold text-2xl" id="currentPrice">{{ $wish_item->Product->price * (1 - $wish_item->Product->discount / 100) }}€</p>
+                    <p class="old-price">{{ $wish_item->Product->price }}€</p>
                 </div>
                 <div class="mt-8">
                     <form action="{{ route('wish.destroy', $wish_item) }}" method="POST" class="inline">

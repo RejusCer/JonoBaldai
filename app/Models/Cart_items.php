@@ -17,7 +17,7 @@ class Cart_items extends Model
         'quantity'
     ];
 
-    public function Carts()
+    public function Cart()
     {
         return $this->belongsTo(Cart::class);
     }

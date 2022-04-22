@@ -22,8 +22,12 @@ class CartController extends Controller
         }
         else if (auth()->user() != null)
         {
-            $Cart_items = Cart_items::join('carts', 'carts.id', '=', 'cart_items.cart_id')->select('cart_items.*', 'carts.user_id')
-                ->where('user_id', auth()->user()->id)->get();
+            // $Cart_items = Cart_items::join('carts', 'carts.id', '=', 'cart_items.cart_id')->select('cart_items.*', 'carts.user_id')
+            //     ->where('user_id', auth()->user()->id)->get();
+
+            $Cart_items = Cart_items::with(['Cart'])->whereHas('Cart', function($q) {
+                $q->where('user_id', auth()->user()->id);
+            })->get();
         }
 
         return view('cart', [
