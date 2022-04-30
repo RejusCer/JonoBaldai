@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Product;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Order_item extends Model
 {
@@ -12,6 +13,11 @@ class Order_item extends Model
         'product_id',
         'quantity'
     ];
+
+    public function Product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 
     use HasFactory;
 }

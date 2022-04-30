@@ -25,7 +25,6 @@
     <div class="bg-gradient-to-r from-primary w-2/12 fixed h-full pt-4 pl-4 hidden md:block">
         <a href="{{ route('home') }}" class="border-r-2 border-black font-bold text-xl pr-2">JonoBaldai</a>
         
-        {{-- iš šitos dalies reikės padaryti componentą --}}
         <div class="flex flex-col mt-8">
             <a href="{{ route('baldai', 'kedes') }}" class="sidebar-buttons">
                 <i class="fas fa-align-justify"></i> <p class="sidebar-text">Kėdės</p>
@@ -42,7 +41,7 @@
             <a href="{{ route('baldai', 'stalai') }}" class="sidebar-buttons">
                 <i class="fas fa-align-justify"></i> <p class="sidebar-text">Stalai</p>
             </a>
-            <a href="{{ route('baldai', 'akcijos') }}" class="sidebar-buttons">
+            <a href="{{ route('discount') }}" class="sidebar-buttons">
                 <i class="fas fa-credit-card"></i> <p class="sidebar-text">su akcija</p>
             </a>
         </div>
@@ -55,7 +54,8 @@
                 <div class="flex self-start sm:self-center">
                     <a href="{{ route('home') }}" class="border-r-2 border-black font-bold text-xl px-2 self-center inline md:hidden">JB</a>
                     @auth
-                    <a href="#" class="top-nav-items">{{ auth()->user()->first_name }}</a>
+                    <a href="{{ route('user', auth()->user()->id) }}" class="top-nav-items max-w-[6rem] truncate">{{ auth()->user()->first_name }}</a>
+                    <a href="{{ route('user.orders', auth()->user()->id) }}" class="top-nav-items">Užsakymai</a>
                     @endauth
                 </div>
                 <a href="#" class="toggler absolute top-3 right-4 flex sm:hidden flex-col justify-between w-8 h-5">
@@ -77,13 +77,11 @@
                     @endguest
                     <a href="{{ route('cart') }}" class="top-nav-items border-4 rounded-3xl border-black p-2 hover:bg-black hover:text-secondary">
                         <i class="fas fa-shopping-cart"></i> <span class="hidden sm:inline">Krepšelis </span>
-                        @auth <span>{{ auth()->user()->Cart->Cart_Items->count() }}</span> @endauth
-                        @guest <span>{{ cartItemCount() }}</span> @endguest
+                        <span>{{ cartItemCount() }}</span> 
                     </a>
                     <a href="{{ route('wishList') }}" class="top-nav-items border-4 rounded-3xl border-black p-2 hover:bg-black hover:text-secondary">
                         <i class="fas fa-heart"></i> <span class="hidden sm:inline">Norai </span>
-                        @auth <span>{{ auth()->user()->Wishlist->Wishlist_items->count() }}</span> @endauth
-                        @guest<span>{{ wishlistItemCount() }}</span>@endguest
+                        <span>{{ wishlistItemCount() }}</span>
                     </a>
                 </div>
             </div>

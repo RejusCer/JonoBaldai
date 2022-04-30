@@ -15,4 +15,13 @@ class ProductController extends Controller
             'products' => $products,
         ]);
     }
+
+    public function discount()
+    {
+        $products = Product::where('discount', '!=', 0)->get();
+
+        return view('baldai', [
+            'products' => $products,
+        ]);
+    }
 }

@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\UsersController;
 use App\Http\Controllers\DetailsController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\WishlistController;
@@ -23,7 +24,8 @@ use Symfony\Component\HttpFoundation\Request;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('baldai/{itemCategory}', [ProductController::class, 'index'])->name('baldai');
+Route::get('products/{itemCategory}', [ProductController::class, 'index'])->name('baldai');
+Route::get('discounts', [ProductController::class, 'discount'])->name('discount');
 
 // Route::get('cart/increment', [CartController::class, 'increment'])->name('increment');
 
@@ -47,3 +49,10 @@ Route::get('details/{product}', [DetailsController::class, 'index'])->name('deta
 
 Route::get('order', [OrderController::class, 'index'])->name('order');
 Route::post('order/make_order', [OrderController::class, 'store'])->name('order.store');
+
+// reikes auth middleware sukurti
+Route::get('{userId}', [UsersController::class, 'index'])->name('user');
+Route::post('{userId}/change', [UsersController::class, 'change'])->name('user.change');
+Route::get('{userId}/delete', [UsersController::class, 'destroyPage'])->name('user.delete');
+Route::delete('{userId}/delete', [UsersController::class, 'destroy'])->name('user.delete');
+Route::get('orders/{userId}', [UsersController::class, 'orders'])->name('user.orders');

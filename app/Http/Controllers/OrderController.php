@@ -96,7 +96,7 @@ class OrderController extends Controller
         Cart_items::where('cart_id', $cart->id)->delete();
 
         // parodyti užsakymą vartotojui
-        return view('home');
+        return redirect()->route('home');
         // with...
     }
 }
