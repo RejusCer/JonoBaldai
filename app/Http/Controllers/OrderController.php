@@ -4,14 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\Order;
+use App\Mail\OrderMail;
 use App\Models\Cart_items;
 use App\Models\Order_item;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
     public function index(Request $request)
     {
+        // jei vartotojas neturi pasirinktų prekių - grąžinti į krepšelį
+        if ($request->cart_items == null) return back();
+
         // paimti vartotojo krepšelio prekes
         $cart_items = Cart_items::with(['product'])->whereIn('id', $request->cart_items)->get();
 
@@ -52,14 +57,29 @@ class OrderController extends Controller
     {
 
         // patvirtinti ar info gerai suvesta
-        $request->validate([
-            'first_name' => 'required|max:255',
-            'last_name' => 'required|max:255',
-            'email' => 'required|email|max:255',
-            'tel' => 'required|max:255',
-            'address' => 'required|max:255',
-            'payment_type' => 'required'
-        ]);
+        // jei klientas prisijunges - vesti naujo email nereikia
+        if (auth()->user())
+        {
+            $request->validate([
+                'first_name' => 'required|max:255',
+                'last_name' => 'required|max:255',
+                'email' => 'required|email|max:255',
+                'tel' => 'required|max:255',
+                'address' => 'required|max:255',
+                'payment_type' => 'required'
+            ]);
+        }
+        else 
+        {
+            $request->validate([
+                'first_name' => 'required|max:255',
+                'last_name' => 'required|max:255',
+                'email' => 'required|unique:users|email|max:255',
+                'tel' => 'required|max:255',
+                'address' => 'required|max:255',
+                'payment_type' => 'required'
+            ]);
+        }
 
         // rasti pirkeją duomenų bazėje pagal device_id, kad butu patvirtinta tapatybė
         // Jie yra duomenų pakitimas - išsaugoti
@@ -92,11 +112,15 @@ class OrderController extends Controller
             ]);
         }
 
+        // nusiusti order details i vartotojo email
+        Mail::to($cart->user->email)->send(new OrderMail());
+
         // atlaisvinti krepšelį
         Cart_items::where('cart_id', $cart->id)->delete();
 
         // parodyti užsakymą vartotojui
+        if (auth()->user()) return redirect()->route('user.orders', auth()->user()->id);
+
         return redirect()->route('home');
-        // with...
     }
 }

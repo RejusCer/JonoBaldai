@@ -1,5 +1,7 @@
 <?php
 
+use App\Mail\OrderMail;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
@@ -22,11 +24,13 @@ use Symfony\Component\HttpFoundation\Request;
 |
 */
 
+
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('products/{itemCategory}', [ProductController::class, 'index'])->name('baldai');
 Route::get('discounts', [ProductController::class, 'discount'])->name('discount');
 
+// ajax bandymas
 // Route::get('cart/increment', [CartController::class, 'increment'])->name('increment');
 
 Route::get('cart', [CartController::class, 'index'])->name('cart');
@@ -50,9 +54,10 @@ Route::get('details/{product}', [DetailsController::class, 'index'])->name('deta
 Route::get('order', [OrderController::class, 'index'])->name('order');
 Route::post('order/make_order', [OrderController::class, 'store'])->name('order.store');
 
-// reikes auth middleware sukurti
-Route::get('{userId}', [UsersController::class, 'index'])->name('user');
-Route::post('{userId}/change', [UsersController::class, 'change'])->name('user.change');
-Route::get('{userId}/delete', [UsersController::class, 'destroyPage'])->name('user.delete');
-Route::delete('{userId}/delete', [UsersController::class, 'destroy'])->name('user.delete');
-Route::get('orders/{userId}', [UsersController::class, 'orders'])->name('user.orders');
+Route::group(['middleware' => ['auth']], function(){
+    Route::get('{userId}', [UsersController::class, 'index'])->name('user');
+    Route::post('{userId}', [UsersController::class, 'change'])->name('user.change');
+    Route::get('{userId}/delete', [UsersController::class, 'destroyPage'])->name('user.delete');
+    Route::delete('{userId}/delete', [UsersController::class, 'destroy'])->name('user.delete');
+    Route::get('orders/{userId}', [UsersController::class, 'orders'])->name('user.orders');
+});

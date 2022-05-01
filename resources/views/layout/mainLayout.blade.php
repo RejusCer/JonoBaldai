@@ -52,7 +52,7 @@
         <nav class="bg-secondary md:rounded-b-2xl mb-12 sticky top-0">
             <div class=" w-full flex flex-col sm:flex-row justify-between items-center">
                 <div class="flex self-start sm:self-center">
-                    <a href="{{ route('home') }}" class="border-r-2 border-black font-bold text-xl px-2 self-center inline md:hidden">JB</a>
+                    <a href="{{ route('home') }}" class="border-r-2 border-black font-bold text-xl px-2 pb-2 self-center inline md:hidden">JB</a>
                     @auth
                     <a href="{{ route('user', auth()->user()->id) }}" class="top-nav-items max-w-[6rem] truncate">{{ auth()->user()->first_name }}</a>
                     <a href="{{ route('user.orders', auth()->user()->id) }}" class="top-nav-items">Užsakymai</a>

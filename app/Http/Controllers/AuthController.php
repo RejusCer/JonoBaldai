@@ -83,6 +83,7 @@ class AuthController extends Controller
 
     public function logout()
     {
+        setcookie('device', '', time() - 3600, '/');
         auth()->logout();
 
         return redirect()->back();

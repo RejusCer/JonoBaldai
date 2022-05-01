@@ -17,7 +17,7 @@
                 @error('first_name')
                     <span class="text-red-400">{{ $message }}</span>
                 @enderror
-                <input type="text" name="first_name" class="input-style">
+                <input type="text" name="first_name" class="input-style" value="{{ old('first_name') }}">
             </div>
 
             <div class="input-container">
@@ -25,7 +25,7 @@
                 @error('last_name')
                     <span  class="text-red-400">{{ $message }}</span>
                 @enderror
-                <input type="text" name="last_name" class="input-style">
+                <input type="text" name="last_name" class="input-style" value="{{ old('last_name') }}">
             </div>
 
             <div class="input-container">
@@ -33,7 +33,7 @@
                 @error('email')
                     <span  class="text-red-400">{{ $message }}</span>
                 @enderror
-                <input type="email" name="email" class="input-style">
+                <input type="email" name="email" class="input-style" value="{{ old('email') }}">
             </div>
 
             <div class="input-container">
